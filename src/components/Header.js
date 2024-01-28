@@ -57,17 +57,20 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="absolute flex justify-between px-8 py-2 bg-gradient-to-b from-black z-10 w-full">
+    <div className="absolute flex flex-col md:flex-row justify-between px-8 py-2 bg-gradient-to-b from-black z-10 w-full">
+      <div className="mx-auto md:mx-0">
       <img
         className="w-44 "
         src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
         alt="logo"
       />
+      </div>
+     
       {user && (
-        <div className="flex">
+        <div className="flex ">
           {gptSearchStore.showGptSearch && (
             <select
-              className="my-4 px-4 mr-2 rounded-lg text-white bg-slate-700 font-semibold"
+              className="my-4 px-4 mr-2 py-2 md:py-0 rounded-lg text-white bg-slate-700 font-semibold text-xs md:text-base"
               onChange={selectLanguage}
             >
               {LANGUAGES_LIST.map((lang) => (
@@ -78,13 +81,13 @@ const Header = () => {
             </select>
           )}
           <button
-            className="bg-violet-800 text-white rounded-lg font-semibold my-4 px-4 mr-2"
+            className="bg-violet-800 text-white rounded-lg font-semibold my-4 px-4 py-2 md:py-0 mr-2 text-xs md:text-base"
             onClick={handleGptSearch}
           >
             {gptSearchStore.showGptSearch ? "Home Page" : "GPT Search"}
           </button>
           <div
-            className="text-xl text-white font-bold p-2 my-2 underline cursor-pointer"
+            className="md:text-xl text-sm text-white font-bold p-2 my-2 underline cursor-pointer py-4 "
             onClick={handleSignOut}
           >
             Sign Out

@@ -88,15 +88,16 @@ const Login = () => {
   return (
     <>
       <Header />
-      <div className="absolute">
+      <div className="fixed">
         <img
           src={BG_IMG_URL}
           alt="bg-img"
+          className="h-screen md:h-full object-cover"
         />
       </div>
 
       <form
-        className="bg-black p-12 absolute w-1/4 my-36 mx-auto right-0 left-0 text-white rounded bg-opacity-80"
+        className="bg-black p-12 absolute md:w-1/4 w-11/12  rounded-3xl my-36 mx-auto right-0 left-0 text-white  bg-opacity-80"
         onSubmit={submitHandler}
       >
         <h1 className="font-bold text-3xl py-4 m-2">
