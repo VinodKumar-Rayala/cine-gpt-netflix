@@ -1,15 +1,24 @@
 import React from "react";
 import Header from "./Header";
-import useNowPlayingMovies from  '../hooks/useNowPlayingMovies'
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import usePopularMovies from "../hooks/usePopularMovies";
+import useTrendingMovies from "../hooks/useTrendingMovies";
+import useUpcomingMovies from "../hooks/useUpcomingMovies";
+import { useSelector } from "react-redux";
+import GPTSearch from "./GPTSearch";
 
 const Browse = () => {
+  const gptSearchStore = useSelector((store) => store.gptSearch);
 
+  useNowPlayingMovies();
+  usePopularMovies();
+  useTrendingMovies();
+  useUpcomingMovies();
 
-  useNowPlayingMovies()
- 
-  return (<>
+  return (
+    <>
       <Header />
 
       {/*
@@ -23,9 +32,14 @@ const Browse = () => {
         -Movieslist * n 
           -Movies Card * n
        */}
-
-       <MainContainer />
-       <SecondaryContainer />
+      {gptSearchStore.showGptSearch ? (
+        <GPTSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </>
   );
 };
